@@ -21,6 +21,7 @@ builder.Services.AddScoped<IBaixarTabelaServico, BaixarTabelaServico>();
 builder.Services.AddScoped<ISalvarTabelaServico, SalvarTabelaServico>();
 builder.Services.AddScoped<ITransportadoraServico, TransportadoraServico>();
 builder.Services.AddScoped<ITransportadoraServicoCliente, TransportadoraServicoCliente>();
+builder.Services.AddScoped<ICalcularFreteServico, CalcularFreteServico>();
 builder.Services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
 builder.Services.AddAutoMapper(typeof(ConfiguracaoMapeamento));
 

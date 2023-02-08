@@ -4,8 +4,7 @@ namespace SMGBitTransportadora.Servico.Interfaces
 {
     public interface ITransportadoraServico 
     {
-        Task<IEnumerable<Planilha>> GetAll();
+        Task<List<Planilha>> GetAll();
         Task<Planilha> Create(Planilha planilha);
-        Task Delete(int id);
     }
 }

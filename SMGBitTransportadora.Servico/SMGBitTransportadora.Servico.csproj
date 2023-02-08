@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SMGBitTransportadora.Apresentacao\SMGBitTransportadora.Apresentacao.csproj" />
     <ProjectReference Include="..\SMGBitTransportadora.Dominio\SMGBitTransportadora.Dominio.csproj" />
     <ProjectReference Include="..\SMGBitTransportadora.Infra\SMGBitTransportadora.Infra.csproj" />
   </ItemGroup>

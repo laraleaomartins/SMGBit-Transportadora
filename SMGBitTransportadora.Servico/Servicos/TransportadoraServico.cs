@@ -25,15 +25,10 @@ namespace SMGBitTransportadora.Servico.Servicos
             return planilha;
         }
 
-        public async Task Delete(int id)
-        {
-            await Repositorio.Delete(id);
-        }
-
-        public async Task<IEnumerable<Planilha>> GetAll()
+        public async Task<List<Planilha>> GetAll()
         {
             var planilhaRepositorio = await Repositorio.GetAll();
-            var planilha =  Mapper.Map<IEnumerable<Planilha>>(planilhaRepositorio);
+            var planilha =  Mapper.Map<List<Planilha>>(planilhaRepositorio);
             return planilha;
         }
     }

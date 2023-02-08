@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SMGBitTransportadora.Apresentacao.Modelos;
 using SMGBitTransportadora.Dominio.Extensao;
 using SMGBitTransportadora.Dominio.Modelos;
 using SMGBitTransportadora.Infra.Repositorio.Modelos;
@@ -14,6 +15,7 @@ namespace SMGBitTransportadora.Infra.Repositorio.Mapeamento
 
             CreateMap<PlanilhaRepositorio, Planilha>().ForMember(p => p.TipoVeiculo, u => u.MapFrom(pr => pr.TipoVeiculo.StringParaTipoVeiculoEnum()))
                                                       .ForMember(p => p.TipoViagem, u => u.MapFrom(pr => pr.TipoViagem.StringParaTipoViagemEnum()));
+            CreateMap<Planilha, PlanilhaTela>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using SMGBitTransportadora.Aplicacao.Interfaces;
+using SMGBitTransportadora.Apresentacao.Modelos;
 using SMGBitTransportadora.Dominio.Modelos;
 using SMGBitTransportadora.Servico.Interfaces;
 using System.Data;
@@ -8,38 +9,26 @@ namespace SMGBitTransportadora.Aplicacao.Servicos
 {
     public class TransportadoraServicoCliente : ITransportadoraServicoCliente
     {
-        protected ITransportadoraServico TransportadoraServico;
         protected ISalvarTabelaServico SalvarTabelaServico;
         protected IBaixarTabelaServico BaixarTabelaServico;
-        public TransportadoraServicoCliente(ITransportadoraServico transportadoraServico, ISalvarTabelaServico salvarTabelaServico, IBaixarTabelaServico baixarTabelaServico)
+        protected ICalcularFreteServico CalcularFreteServico;
+        public TransportadoraServicoCliente(ISalvarTabelaServico salvarTabelaServico, IBaixarTabelaServico baixarTabelaServico, ICalcularFreteServico calcularFreteServico)
         {
-            TransportadoraServico = transportadoraServico;
             SalvarTabelaServico = salvarTabelaServico;
             BaixarTabelaServico = baixarTabelaServico;
+            CalcularFreteServico = calcularFreteServico;
         }
 
         public async Task<DataTable> BaixarTabela(IFormFile file)
         {
             var tabela = await BaixarTabelaServico.BaixarTabela(file);
-            await SalvarTabela(tabela);
+            await SalvarTabela(tabela); //Remover - apenas para questão de teste.
             return tabela;
         }
 
-        public async Task<Planilha> Create(Planilha planilha)
+        public async Task<List<PlanilhaTela>> CalcularFretePlanilha()
         {
-            await TransportadoraServico.Create(planilha);
-            return planilha;
-        }
-
-        public async  Task Delete(int id)
-        {
-            await TransportadoraServico.Delete(id);
-        }
-
-        public async Task<IEnumerable<Planilha>> GetAll()
-        {
-            var planilhas = await TransportadoraServico.GetAll();
-            return planilhas;
+            return await CalcularFreteServico.CalcularFretePlanilha();
         }
 
         public async Task SalvarTabela(DataTable tabela)

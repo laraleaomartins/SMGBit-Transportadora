@@ -15,26 +15,6 @@ namespace SMGBitTransportadora.API.Controllers
             TransportadoraServicoCliente = transportadoraServicoCliente;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            return Ok(await TransportadoraServicoCliente.GetAll());
-        }
-
-        [HttpPost("transportadora/Create")]
-        public async Task<IActionResult> Create([FromBody] Planilha planilha)
-        {
-            await TransportadoraServicoCliente.Create(planilha);
-            return Ok();
-        }
-
-        [HttpDelete("transportadora/Delete")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await TransportadoraServicoCliente.Delete(id);
-            return Ok();
-        }
-
         [HttpPost("transportadora/BaixarTabela")]
         public async Task<IActionResult> BaixarTabela(IFormFile file)
         {
@@ -47,6 +27,12 @@ namespace SMGBitTransportadora.API.Controllers
         {
             await TransportadoraServicoCliente.SalvarTabela(tabela);
             return Ok();
+        }
+
+        [HttpGet("transportadora/CalcularFretePlanilha")]
+        public async Task<IActionResult> CalcularFretePlanilha()
+        {
+            return Ok(await TransportadoraServicoCliente.CalcularFretePlanilha());
         }
     }
 }

@@ -30,24 +30,7 @@ namespace SMGBitTransportadora.Infra.Repositorio.Servicos
             }
         }
 
-        public async Task Delete(int id)
-        {
-            var result = DataSet.SingleOrDefault(c => c.Id.Equals(id));
-            if (result != null)
-            {
-                try
-                {
-                    DataSet.Remove(result);
-                    await Contexto.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Não foi possível deletar planilha - {ex}");
-                }
-            }
-        }
-
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<List<T>> GetAll()
         {
             return DataSet.ToList();
         }
