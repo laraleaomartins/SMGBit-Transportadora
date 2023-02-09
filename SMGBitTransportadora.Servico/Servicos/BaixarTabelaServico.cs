@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
 using OfficeOpenXml;
 using SMGBitTransportadora.Servico.Interfaces;
 using System.Data;
@@ -8,10 +7,6 @@ namespace SMGBitTransportadora.Servico.Servicos
 {
     public class BaixarTabelaServico : IBaixarTabelaServico
     {
-        public BaixarTabelaServico()
-        {
-        }
-
         public async Task<DataTable> BaixarTabela(IFormFile file)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

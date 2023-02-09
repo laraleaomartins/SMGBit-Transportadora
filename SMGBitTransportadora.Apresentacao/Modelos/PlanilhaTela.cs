@@ -21,12 +21,12 @@ namespace SMGBitTransportadora.Apresentacao.Modelos
         public string Placa { get; set; }
         public string Motorista { get; set; }
         [JsonProperty(PropertyName = "Tipo de Veículo")]
-        public TipoVeiculoEnum TipoVeiculo { get; set; }
+        public string TipoVeiculo { get; set; }
         [JsonProperty(PropertyName = "Km Rodado")]
         public int KmRodado { get; set; }
         public int Caixas { get; set; }
         [JsonProperty(PropertyName = "Tipo de Viagem")]
-        public TipoViagemEnum TipoViagem { get; set; }
+        public string TipoViagem { get; set; }
         public int Taxa { get; set; }
     }
 }

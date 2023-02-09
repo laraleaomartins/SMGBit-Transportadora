@@ -15,24 +15,32 @@ namespace SMGBitTransportadora.API.Controllers
             TransportadoraServicoCliente = transportadoraServicoCliente;
         }
 
-        [HttpPost("transportadora/BaixarTabela")]
+        [HttpPost("BaixarTabela")]
         public async Task<IActionResult> BaixarTabela(IFormFile file)
         {
-            await TransportadoraServicoCliente.BaixarTabela(file);
-            return Ok();
+            try
+            {
+                await TransportadoraServicoCliente.BaixarTabela(file);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpPost("transportadora/SalvarTabela")]
-        public async Task<IActionResult> SalvarTabela(DataTable tabela)
-        {
-            await TransportadoraServicoCliente.SalvarTabela(tabela);
-            return Ok();
-        }
-
-        [HttpGet("transportadora/CalcularFretePlanilha")]
+        [HttpGet("CalcularFretePlanilha")]
         public async Task<IActionResult> CalcularFretePlanilha()
         {
-            return Ok(await TransportadoraServicoCliente.CalcularFretePlanilha());
+            try
+            {
+                return Ok(await TransportadoraServicoCliente.CalcularFretePlanilha());
+
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
     }
 }

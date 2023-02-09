@@ -10,15 +10,13 @@ namespace SMGBitTransportadora.Servico.Servicos
 {
     public class SalvarTabelaServico : ISalvarTabelaServico
     {
-        protected ICalcularFreteServico CalcularFreteServico; //APAGAR
         protected ITransportadoraServico TransportadoraServico;
         protected IMapper Mapper;
 
-        public SalvarTabelaServico(ITransportadoraServico transportadoraServico, IMapper mapper, ICalcularFreteServico calcularFreteServico)
+        public SalvarTabelaServico(ITransportadoraServico transportadoraServico, IMapper mapper)
         {
             TransportadoraServico = transportadoraServico;
             Mapper = mapper;
-            CalcularFreteServico = calcularFreteServico;//APAGAR
         }
 
         public async Task SalvarTabela(DataTable tabela)
@@ -32,7 +30,6 @@ namespace SMGBitTransportadora.Servico.Servicos
                 var planilha = Mapper.Map<Planilha>(planilhaRepositorio);
                 await TransportadoraServico.Create(planilha);
             }
-            var verResultadoAqui = await CalcularFreteServico.CalcularFretePlanilha();
         }
     }
 }

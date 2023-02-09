@@ -46,7 +46,7 @@ namespace SMGBitTransportadora.Dominio.Extensao
             {
                 case "last mile":
                     return TipoViagemEnum.LastMile;
-                case "full filment":
+                case "fullfilment":
                     return TipoViagemEnum.Fullfilment;
                 default:
                     return TipoViagemEnum.NaoRegistrado;
@@ -59,9 +59,9 @@ namespace SMGBitTransportadora.Dominio.Extensao
             switch (tipoViagem)
             {
                 case TipoViagemEnum.LastMile:
-                    return "last mile";
+                    return "Last mile";
                 case TipoViagemEnum.Fullfilment:
-                    return "full filment";
+                    return "Fullfilment";
                 default:
                     return "Não registrado";
             }

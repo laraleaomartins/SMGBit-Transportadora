@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SMGBitTransportadora.Apresentacao.Modelos;
 using SMGBitTransportadora.Dominio.Extensao;
 using SMGBitTransportadora.Dominio.Modelos;
-using SMGBitTransportadora.Infra.Repositorio.Modelos;
 using SMGBitTransportadora.Servico.Interfaces;
 
 namespace SMGBitTransportadora.Servico.Servicos
@@ -141,7 +139,7 @@ namespace SMGBitTransportadora.Servico.Servicos
                         planilhaParaTela.Taxa = taxa.Value;
                         planilhaTela.Add(planilhaParaTela);
                     }
-                    if (planilhaDominio.Destino == null && planilhaDominio.TipoVeiculo.TipoVeiculoEnumParaString().ToUpper() == taxa.VehicleType && planilhaDominio.Operacao == taxa.Client)
+                    if (taxa.Destination == null && planilhaDominio.TipoVeiculo.TipoVeiculoEnumParaString().ToUpper() == taxa.VehicleType && planilhaDominio.Operacao == taxa.Client)
                     {
                         var planilhaParaTela = Mapper.Map<PlanilhaTela>(planilhaDominio);
                         planilhaParaTela.Taxa = taxa.Value;

@@ -15,7 +15,9 @@ namespace SMGBitTransportadora.Infra.Repositorio.Mapeamento
 
             CreateMap<PlanilhaRepositorio, Planilha>().ForMember(p => p.TipoVeiculo, u => u.MapFrom(pr => pr.TipoVeiculo.StringParaTipoVeiculoEnum()))
                                                       .ForMember(p => p.TipoViagem, u => u.MapFrom(pr => pr.TipoViagem.StringParaTipoViagemEnum()));
-            CreateMap<Planilha, PlanilhaTela>();
+
+            CreateMap<Planilha, PlanilhaTela>().ForMember(pr => pr.TipoVeiculo, u => u.MapFrom(p => p.TipoVeiculo.TipoVeiculoEnumParaString()))
+                                               .ForMember(pr => pr.TipoViagem, u => u.MapFrom(p => p.TipoViagem.TipoViagemEnumParaString()));
         }
     }
 }

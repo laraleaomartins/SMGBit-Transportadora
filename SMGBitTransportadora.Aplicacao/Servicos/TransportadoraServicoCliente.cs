@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using SMGBitTransportadora.Aplicacao.Interfaces;
 using SMGBitTransportadora.Apresentacao.Modelos;
-using SMGBitTransportadora.Dominio.Modelos;
 using SMGBitTransportadora.Servico.Interfaces;
 using System.Data;
 
@@ -22,7 +21,7 @@ namespace SMGBitTransportadora.Aplicacao.Servicos
         public async Task<DataTable> BaixarTabela(IFormFile file)
         {
             var tabela = await BaixarTabelaServico.BaixarTabela(file);
-            await SalvarTabela(tabela); //Remover - apenas para questão de teste.
+            await SalvarTabela(tabela);
             return tabela;
         }
 
